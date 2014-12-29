@@ -9,6 +9,6 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-	<access origin="https://www.miningrigrentals.com" />
+	<access origin="https://google.com" />
 
 </widget>
