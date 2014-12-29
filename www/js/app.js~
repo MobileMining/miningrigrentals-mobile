@@ -22,9 +22,9 @@
 
 
 	$('#myrigs').click(function(event){
-		event.preventDefault();
 		mrr.doGetMyRigs(function(data){
 			$('#result').html(data);
 		});
+		event.preventDefault();
 	});
 }());

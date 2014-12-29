@@ -1,6 +1,6 @@
 var MiningRigRentals = function(){
 	
-	this.doAPICall(endpoint, queryparams){
+	this.doAPICall = function(endpoint, queryparams, callback){
 		var params = $.extend(true, {}, queryparams);
 
 		params.nonce = new Date().getTime();
@@ -10,11 +10,6 @@ var MiningRigRentals = function(){
 
 		var hash = CryptoJS.HmacSHA1(post_data, this.secret);
 		var sign = hash.toString(CryptoJS.enc.Base64);
-	 
-		// generate the extra headers
-		var headers = {
-			
-		};
 
 		$.ajaxSetup({
   			beforeSend: function(request) {
@@ -28,10 +23,12 @@ var MiningRigRentals = function(){
     			type: 'POST',
     			url: 'https://www.miningrigrentals.com/api/v1/'+endpoint,
     			data: post_data
-		}).done(function(data) { 
-    			alert(data);
-		});
+		}).done(callback);
 	
+	}
+
+	this.doGetMyRigs = function(callback){
+		return this.doAPICall("account", {method:"myrigs"},callback);
 	}
 
 	this.isAnonymous = function(){
