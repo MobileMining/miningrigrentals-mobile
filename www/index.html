@@ -12,13 +12,23 @@
 
 <p id="result">
 </p>
+<p id="log">
+</p>
     <ul class='list'></ul>
 
 <script src="lib/jquery.js"></script>
 <script src="lib/cryptojs/rollups/hmac-sha1.js"></script>
 <script src="lib/cryptojs/components/enc-base64.js"></script>
 
+<script>
+function log(str){
+	var e = $('#log');
+	e.html(e.html()+"<br>"+str);
+}
+</script>
+
 <script src="js/miningrigrentals.js"></script>
+<script src="js/debug.js"></script>
 <script src="js/app.js"></script>
 
 </body>

@@ -5,6 +5,8 @@
 	var mrr = new MiningRigRentals();
 	var storage = window.localStorage; 
 
+	debuginit(storage);
+
 	$('.key').val(storage.mrrkey);
 	$('.secret').val(storage.mrrsecret);
 	mrr.key = storage.mrrkey;
@@ -24,7 +26,7 @@
 	$('#myrigs').click(function(event){
 		event.preventDefault();
 		mrr.doGetMyRigs(function(data){
-			$('#result').html(data);
+			$('#result').html(mrr.key+"<br>"+mrr.secret+"<br>"+data);
 		});
 	});
 }());
