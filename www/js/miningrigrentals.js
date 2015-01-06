@@ -9,9 +9,6 @@ var MiningRigRentals = function(){
 		var post_data = $.param(params);
 		var key = this.key;
 
-log("post_data: "+post_data);
-log("key: "+key);
-
 		var hash = CryptoJS.HmacSHA1(post_data, this.secret);
 		var sign = hash.toString(CryptoJS.enc.Hex);
 
@@ -25,11 +22,11 @@ log("key: "+key);
     				request.setRequestHeader("User-Agent",'Mozilla/4.0 (compatible; MiningRigRentals %VERSION%)');
 				request.setRequestHeader("x-api-sign", sign);
 				request.setRequestHeader("x-api-key", key);
-log("sign: "+sign);
-log("key: "+key);
   			},
     			url: 'https://www.miningrigrentals.com/api/v1/'+endpoint,
-    			data: post_data
+    			data: post_data,
+          error: function (xhr, ajaxOptions, thrownError) {
+        }
 		}).done(callback);
 	
 	}

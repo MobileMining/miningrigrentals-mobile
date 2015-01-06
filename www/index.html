@@ -3,33 +3,42 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    
+    <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.5.min.css" />
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/jquery.mobile-1.4.5.min.js"></script>
+    <script src="lib/fastclick.js"></script>
+    <script src="lib/cryptojs/rollups/hmac-sha1.js"></script>
+    <script src="lib/cryptojs/components/enc-base64.js"></script>
+
 </head>
 <body>
 
-<input class='key' type="text" placeholder="API key"/>
-<input class='secret' type="text" placeholder="API secret"/>
- <a id="myrigs" href=".">My Rigs</a> 
+<div data-role="page" id="settings">
 
-<p id="result">
-</p>
-<p id="log">
-</p>
-    <ul class='list'></ul>
+  <div data-role="panel" class="ui-panel" id="mypanel" data-position="left" data-display="overlay" data-animate="false">
+    <a href="#" id="panel-dashboard" class="ui-btn ui-corner-all">Dashboard</a>
+    <a href="#" id="panel-settings" class="ui-btn ui-corner-all">Settings</a>
+  </div>
 
-<script src="lib/jquery.js"></script>
-<script src="lib/cryptojs/rollups/hmac-sha1.js"></script>
-<script src="lib/cryptojs/components/enc-base64.js"></script>
+  <div data-role="header">
+    <a href="#mypanel" class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all">Menu</a>
+    <h1>Settings</h1>
+  </div>
 
-<script>
-function log(str){
-	var e = $('#log');
-	e.html(e.html()+"<br>"+str);
-}
-</script>
+  <div role="main" class="ui-content">
+		<div id="DashboardView"></div>
+    <div id="SettingsView"></div>
+  </div>
+</div><!-- Page -->
 
-<script src="js/miningrigrentals.js"></script>
-<script src="js/debug.js"></script>
-<script src="js/app.js"></script>
+    <script src="js/miningrigrentals.js"></script>
+    <!--script src="js/debug.js"></script-->
+    
+    <script src="js/views/DashboardView.js"></script>
+    <script src="js/views/SettingsView.js"></script>
+    <script src="js/app.js"></script>
 
 </body>
 </html>

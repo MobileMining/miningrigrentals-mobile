@@ -5,28 +5,33 @@
 	var mrr = new MiningRigRentals();
 	var storage = window.localStorage; 
 
-	debuginit(storage);
+  FastClick.attach(document.body);
 
-	$('.key').val(storage.mrrkey);
-	$('.secret').val(storage.mrrsecret);
 	mrr.key = storage.mrrkey;
 	mrr.secret = storage.mrrsecret;
 
-    /* --------------------------------- Event Registration -------------------------------- */
-    $('.key').on('keyup', function(){
-		storage.mrrkey = $('.key').val();
-		mrr.key = storage.mrrkey;
+  var dashboard = new DashboardView(mrr);
+  var settings = new SettingsView(mrr);
+  
+  var activeView = dashboard;
+  
+  settings.deactivate();
+  dashboard.activate();
+
+  var doSelectView = function(view){
+      event.preventDefault();
+        activeView.deactivate();
+		    view.activate();
+        activeView = view;
+        $( "#mypanel" ).panel( "close" );
+  }
+
+  $('#panel-dashboard').click(function(event){
+		     doSelectView(dashboard);
 	});
-    $('.secret').on('keyup', function(){
-		storage.mrrsecret = $('.secret').val();
-		mrr.secret = storage.mrrsecret;
+  $('#panel-settings').click(function(event){
+		    doSelectView(settings);
 	});
 
 
-	$('#myrigs').click(function(event){
-		event.preventDefault();
-		mrr.doGetMyRigs(function(data){
-			$('#result').html(mrr.key+"<br>"+mrr.secret+"<br>"+data);
-		});
-	});
 }());
