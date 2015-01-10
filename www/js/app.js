@@ -12,17 +12,22 @@
 
   var dashboard = new DashboardView(mrr);
   var settings = new SettingsView(mrr);
+  var about = new AboutView();
   
   var activeView = dashboard;
   
+  about.deactivate();
   settings.deactivate();
   dashboard.activate();
+
+  $("#ViewTitle").html(activeView.title);
 
   var doSelectView = function(view){
       event.preventDefault();
         activeView.deactivate();
 		    view.activate();
         activeView = view;
+        $("#ViewTitle").html(view.title);
         $( "#mypanel" ).panel( "close" );
   }
 
@@ -31,6 +36,9 @@
 	});
   $('#panel-settings').click(function(event){
 		    doSelectView(settings);
+	});
+  $('#panel-about').click(function(event){
+		    doSelectView(about);
 	});
 
 

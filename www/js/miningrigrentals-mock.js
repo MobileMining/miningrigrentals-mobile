@@ -32,11 +32,13 @@ var MiningRigRentals = function(){
 	}
 
 	this.doGetMyRigs = function(callback){
-		return this.doAPICall("account", {method:"myrigs"},callback);
+    callback('{"success":true,"version":"1","data":{"records":[{"id":"13332","name":"ScryptBuster II (Min. difficulty: 128)","type":"scrypt","online":"1","price":"0.00026","price_hr":"0.00135417","minhrs":"3","maxhrs":"480","rating":"2.36","status":"available","hashrate_nice":"125.00M","hashrate":"125000000"}]}}');
+		//return this.doAPICall("account", {method:"myrigs"},callback);
 	}
   
   this.doGetRigDetails = function(id, callback){
-    return this.doAPICall("rigs", {method:"detail", id:id}, callback);
+    callback('{"success":true,"version":"1","data":{"id":"15287","name":"Modified AntMiner S1","owner":"balazsgrill","region":"eu","type":"sha256","hashrate":{"advertised":"140000000000","5min":186916976721.92,"30min":147958972132.82,"60min":140171657810.04},"price":"0.000000013","hours":{"min":"3","max":"480"},"status":"available"}}');
+    //return this.doAPICall("rigs", {method:"detail", id:id}, callback);
   }
 
 	this.isAnonymous = function(){
